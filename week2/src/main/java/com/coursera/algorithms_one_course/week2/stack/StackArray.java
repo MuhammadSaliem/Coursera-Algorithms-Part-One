@@ -1,4 +1,4 @@
-package com.coursera;
+package com.coursera.algorithms_one_course.week2.stack;
 
 import java.util.Iterator;
 
