@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.StdRandom;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
-    private Object[] arr;
+    private Item[] arr;
     private int size;
 
     public RandomizedQueue()
@@ -18,12 +18,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class ArrayIterator implements Iterator<Item>
     {
-        private int currentSize = size;
-        private int count= 0;
+        private final Item [] copiedData;
+        private int index;
+
+        public ArrayIterator() {
+            copiedData = (Item[]) new Object[size];
+            for (int i = 0; i < size; i++) {
+                copiedData[i] = arr[i];
+            }   
+            StdRandom.shuffle(copiedData);
+        }
         
         public boolean hasNext()
         {
-            return count < currentSize;
+            return index != copiedData.length;
         }
         
 
@@ -35,10 +43,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         public Item next()
         {
-            if(size == 0)
+            if(!(hasNext()))
                 throw new NoSuchElementException();
 
-            Item item = (Item) arr[count++];
+            index++;
+            Item item = (Item) copiedData[index-1];
             return item;
         }
     }
@@ -57,9 +66,17 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     {
         if(size == 0)
             throw new NoSuchElementException();
-        
-        Item item = (Item) arr[--size];
-        arr[size] = null;
+
+        int index = StdRandom.uniform(size);
+        Item item = arr[index];
+
+        if(index != size - 1)
+        {
+            arr[index] = arr[size - 1];
+        }
+
+         arr[size - 1] = null;
+         size--;
 
         if(size != 0 && size == arr.length/4)
             resize(arr.length/2);
@@ -114,6 +131,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         queue.enqueue("Ahmed");
         queue.enqueue("Khaled");
         queue.enqueue("Hassan");
+        queue.enqueue("Reda");
+        queue.enqueue("Mohamed");
+        queue.enqueue("Amr");
 
         queue.displayQueue(queue);
         System.out.println(queue.sample());
@@ -121,7 +141,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         System.out.println(queue.dequeue());
         queue.displayQueue(queue);
-
+        queue.displayQueue(queue);
+        queue.displayQueue(queue);
     }
 
     private void displayQueue(RandomizedQueue queue)

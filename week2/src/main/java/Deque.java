@@ -41,6 +41,7 @@ public class Deque<Item> implements Iterable<Item> {
         {
             first = last = new Node();
             first.item = item;
+            size++;
             return;
         }
 
@@ -62,6 +63,7 @@ public class Deque<Item> implements Iterable<Item> {
         {
             first = last = new Node();
             first.item = item;
+            size++;
             return;
         }
 
@@ -78,6 +80,14 @@ public class Deque<Item> implements Iterable<Item> {
     {
         if(this.isEmpty())
             throw new NoSuchElementException();
+
+        if(first == last)
+        {
+            Item item = first.item;
+            first = last = null;
+            size--;
+            return item;
+        }
 
         Item item = first.item;
         first = first.next;
@@ -96,6 +106,7 @@ public class Deque<Item> implements Iterable<Item> {
         if(first == last)
         {
             first = last = null;
+            size--;
             return item;
         }
 
@@ -149,7 +160,14 @@ public class Deque<Item> implements Iterable<Item> {
     // unit testing (required)
     public static void main(String[] args)
     {
-        
+        Deque<Integer> deque = new Deque<>();
+        deque.isEmpty();        
+         deque.addLast(2);
+        deque.removeFirst();
+        deque.isEmpty();        
+        deque.addLast(5);
+        deque.removeFirst();
+        System.err.println();
     }
 
 }
