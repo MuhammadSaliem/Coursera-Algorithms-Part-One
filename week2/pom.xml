@@ -19,7 +19,7 @@
             <artifactId>algs4</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/resources/algs4.jar</systemPath>
+            <systemPath>${basedir}/lib/algs4.jar</systemPath>
         </dependency>
     </dependencies>
 
