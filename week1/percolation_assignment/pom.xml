@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.coursera.algorithms_one_course</groupId>
-    <artifactId>week1</artifactId>
+    <groupId>com.coursera.algorithms_one_course.week1</groupId>
+    <artifactId>percolation_assignment</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
