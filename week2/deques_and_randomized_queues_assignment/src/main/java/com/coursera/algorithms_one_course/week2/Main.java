@@ -1,9 +1,6 @@
-package com.coursera.algorithms_one_course.week2.queue;
-
+package com.coursera.algorithms_one_course.week2;
 
 import java.util.Iterator;
-
-import com.coursera.algorithms_one_course.week2.queue.QueueLinkedList;
 
 /**
  * Main
@@ -13,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         Deque<String> deque = new Deque<>();
 
-        
         deque.addLast("Ibrahim");
         displayQueue(deque);
         deque.addLast("Hussien");
@@ -27,13 +23,12 @@ public class Main {
         displayQueue(deque);
         deque.addFirst("Hassan");
         displayQueue(deque);
-        
+
         System.out.println(deque.removeFirst());
         displayQueue(deque);
-        
+
         System.out.println(deque.removeLast());
         displayQueue(deque);
-
 
         RandomizedQueue<String> queue = new RandomizedQueue<>();
         queue.enqueue("Ahmed");
@@ -50,11 +45,10 @@ public class Main {
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
-        
+
     }
 
-        public static void displayQueue(Deque deque)
-    {
+    public static void displayQueue(Deque deque) {
         Iterator<String> iter = deque.iterator();
 
         while (iter.hasNext()) {
